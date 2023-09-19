@@ -1,7 +1,7 @@
 
 import './App.css';
 import db from "./firebase";
-import { collection, addDoc, setDoc, doc, getDoc } from "firebase/firestore"; 
+import { collection, addDoc, setDoc, doc, getDoc, query, where, getDocs } from "firebase/firestore"; 
 
 
 async function handleClickAdd(){ 
@@ -36,13 +36,24 @@ async function handleClickGet(){
   }
 }
 
+async function handleClickQuery(){
+  const q = query(collection(db, "users"), where("first", "==", "Ada"));
+  const querySnapshot = await getDocs(q);
+  const users = [];
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    users.push(doc.data());
+  });
+  console.log(users);
+}
+
 function FirebaseTest() {
   return (
     <div className="App">
       <button className="coolbutton" onClick={() => handleClickAdd()}>Add</button>
       <button className="coolbutton" onClick={() => handleClickSet()}>Set</button>
       <button className="coolbutton" onClick={() => handleClickGet()}>Get</button>
-
+      <button className="coolbutton" onClick={() => handleClickQuery()}>Query</button>
     </div>
   );
 }

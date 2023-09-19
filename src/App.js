@@ -2,13 +2,7 @@
 import './App.css';
 import db from "./firebase";
 import { collection, addDoc } from "firebase/firestore"; 
-import { initializeApp } from "firebase/app";
 
-
-// Initialize Firebase
-
-
-// Initialize Cloud Firestore and get a reference to the service
 
 async function handleClick(){ 
   // Add a new document with a generated id.

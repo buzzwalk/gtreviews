@@ -6,10 +6,12 @@ import { collection, addDoc, setDoc, doc, getDoc, query, where, getDocs } from "
 
 async function handleClickAdd(){ 
   // Add a new document with a generated id.
-  const docRef = await addDoc(collection(db, "users"), {
-    first: "Ada",
-    last: "Lovelace",
-    born: 1815
+  const docRef = await addDoc(collection(db, "DiningHalls","Willage","Reviews"), {
+    GTID: "999999999",
+    message: "WILLAGE IS DA GOAT FR",
+    rating: 5,
+    timestamp: "Jan 01 2023",
+    upvotes: "100"
   });
   console.log("Document written with ID: ", docRef.id);
 }
